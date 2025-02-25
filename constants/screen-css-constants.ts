@@ -1,0 +1,14 @@
+const MOBILE = '48rem';
+
+const DRAWER_WIDTH = 228;
+const MIN_DRAWER_WIDTH = 80;
+const HEADER_HEIGHT = 80;
+const MIN_HEADER_HEIGHT = 62;
+
+export {
+  MOBILE,
+  DRAWER_WIDTH,
+  MIN_DRAWER_WIDTH,
+  HEADER_HEIGHT,
+  MIN_HEADER_HEIGHT,
+};
