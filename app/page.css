@@ -1,0 +1,25 @@
+html, body {
+    scroll-snap-type: y mandatory;
+    margin: 0;
+  }
+  
+  .section {
+    scroll-snap-align: start;
+  }
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 100vh; /* Space between sections */
+  }
+  
+  .section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: #111;
+    color: white;
+    border-bottom: 1px solid white;
+  }

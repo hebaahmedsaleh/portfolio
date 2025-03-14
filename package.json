@@ -2,16 +2,17 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "start": "next start"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.5",
-    "@emotion/react": "^11.13.5",
-    "@emotion/styled": "^11.13.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.1.8",
-    "@mui/material": "^6.1.8",
+    "@mui/material": "^6.4.7",
     "@mui/material-nextjs": "^6.1.8",
+    "gsap": "^3.12.7",
     "next": "^15.1.7",
     "react": "18.2.0",
     "react-dom": "18.2.0"

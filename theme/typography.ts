@@ -110,7 +110,9 @@ export const FONT_SIZES = {
   },
 } as const;
 
-export const FONT_FAMILY = ['Galano Grotesque Alt', 'sans-serif'].join(',');
+export const FONT_FAMILY = ["Arial", "Galano Grotesque Alt", "sans-serif"].join(
+  ","
+);
 
 export const typography: TypographyOptions = {
   ...FONT_SIZES,

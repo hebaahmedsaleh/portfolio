@@ -1,21 +1,49 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { Alert, Button, Typography } from "@mui/material";
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Section } from "./sections";
+import Header from "./Header";
+import { About } from "./sections/About";
+import "./page.css";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
+  useEffect(() => {
+    gsap.utils.toArray(".section").forEach((section: any, index) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 100 }, // Start state (hidden + moved down)
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%", // Animation starts when 80% of the section is in view
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <Alert variant="outlined" severity="success" sx={{ mt: 1, backgroundColor: "primary.50" }}>
-        Helloo Succeded
-      </Alert>
+    <>
+      {/* Fixed App Bar */}
+      <Header />
 
-
-
-      <Button
-          variant="contained"
-        >
-          <Typography variant="sm"> Submit </Typography>
-        </Button>
-
-    </div>
+      <div style={{ margin: 0, padding: 0 }}>
+        <Section id="home" bg="#091f33">
+          <About />
+        </Section>
+        <Section id="about" bg="pink" />
+        <Section id="projects" bg="#a8d5e4" />
+        <Section id="skills" bg="pink" />
+        <Section id="contact" bg="#a8d5e4" />
+      </div>
+    </>
   );
 }
