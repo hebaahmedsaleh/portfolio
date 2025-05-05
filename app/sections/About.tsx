@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
 import { Typography } from "@mui/material";
+import { JobTitle } from "../components/Job-Title";
 
 export const About = () => {
   const bgRef = useRef(null);
@@ -29,30 +30,22 @@ export const About = () => {
       </div>
 
       <div className="about-text-container">
-        <Typography
-          variant="h2"
-          sx={{ color: "#fff", pb: "4rem" }}
-          onClick={() => scrollToSection("home")}
-        >
-          Senior Frontend Engineer
-        </Typography>
+        <JobTitle />
 
-        <Typography
-          variant="h6"
-          sx={{ color: "#fff", pb: "2rem" }}
-          onClick={() => scrollToSection("home")}
-        >
-          I am a Frontend Engineer with over seven years of experience,
-          passionate about building scalable, user-friendly, and accessible web
-          applications.
+        <Typography variant="h6" sx={{ color: "#fff", pb: "2rem" }}>
+          Hi, I'm Heba Ahmed, a passionate Frontend Engineer with over 7 years
+          of experience building modern, user-focused web applications. I
+          specialize in React.js, TypeScript, and Next.js, with a strong
+          foundation in HTML, CSS, and JavaScript. Over the years, I've
+          contributed to several successful products like Wuzzuf, Forasna,
+          WorkMotion beta, Wuzzuf Design System, where I took on roles ranging
+          from Engineering Seniority to UI/UX collaboration and performance
+          optimization.
         </Typography>
 
         <Typography variant="h6" sx={{ color: "#fff" }}>
-          my career experience is in web and mobile development, worked on
-          scalable live projects and design systems mainly using React. I have a
-          Bachelor's degree focused on Computer Science from Cairo University
-          and user interface development diploma from Information Technology
-          Institute.
+          I'm always excited about clean, scalable code and thoughtful UI design
+          — the kind that makes users feel "ah, it is easy to use!"
         </Typography>
       </div>
     </section>

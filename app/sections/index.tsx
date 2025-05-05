@@ -9,7 +9,7 @@ export const Section = ({
 }: {
   id: string;
   bg: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) => {
   const sectionRef = useRef(null);
 

@@ -1,49 +1,45 @@
 "use client";
+import { useEffect, useState } from "react";
+import { isGsapReady, initializeGsap } from "./lib/gsap-setup"; // Import setup function
+import Home from "./sections/Home";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Section } from "./sections";
-import Header from "./Header";
-import { About } from "./sections/About";
-import "./page.css";
+import type { AppProps } from "next/app";
+import { CircularProgress } from "@mui/material";
 
-gsap.registerPlugin(ScrollTrigger);
+export default function App({ pageProps }: AppProps) {
+  const [isReady, setIsReady] = useState(false);
 
-export default function Home() {
   useEffect(() => {
-    gsap.utils.toArray(".section").forEach((section: any, index) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 100 }, // Start state (hidden + moved down)
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%", // Animation starts when 80% of the section is in view
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
+    if (!isGsapReady) {
+      initializeGsap(); // Initialize GSAP once
+    }
+
+    // Wait for GSAP to be ready before rendering the app
+    const checkGsapStatus = () => {
+      if (isGsapReady) {
+        setIsReady(true); // Set state to true once setup is done
+      }
+    };
+
+    const intervalId = setInterval(checkGsapStatus, 100); // Check periodically
+    return () => clearInterval(intervalId); // Cleanup the interval
   }, []);
 
-  return (
-    <>
-      {/* Fixed App Bar */}
-      <Header />
-
-      <div style={{ margin: 0, padding: 0 }}>
-        <Section id="home" bg="#091f33">
-          <About />
-        </Section>
-        <Section id="about" bg="pink" />
-        <Section id="projects" bg="#a8d5e4" />
-        <Section id="skills" bg="pink" />
-        <Section id="contact" bg="#a8d5e4" />
+  if (!isReady) {
+    // Show loading state until ready;
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress size="7rem" />
       </div>
-    </>
-  );
+    );
+  }
+  // Render the main app only when GSAP setup is done
+  return <Home {...pageProps} />;
 }
